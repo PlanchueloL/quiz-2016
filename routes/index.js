@@ -15,6 +15,9 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/author', function(req, res){
+	res.render('author', {autor: 'Guillermo Pagés Scasso', errors: []});
+});
 
 // Autoload de parametros
 router.param('quizId', quizController.load);  // autoload :quizId
