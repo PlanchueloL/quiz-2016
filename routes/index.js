@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/author', function(req, res){
-	res.render('author', {autor: 'Guillermo Pagés Scasso', errors: []});
+	res.render('author', {autor: 'Guzmán Gómez Pérez y Laura Planchuelo'});
 });
 
 // Autoload de parametros
