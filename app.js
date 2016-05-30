@@ -55,6 +55,22 @@ app.use(function(req, res, next) {
    next();
 });
 
+
+//tiempo de sesion
+app.use(function(req, res, next) {
+    tiempo = new Date();
+    if (req.session.user) {
+        creacion = new Date(req.session.user.tiempo);
+        if ((tiempo-creacion)<120000) {
+         req.session.user.tiempo = tiempo;
+        }else {
+            delete req.session.user;
+        }
+    };
+next();
+});
+
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
