@@ -42,10 +42,13 @@ exports.ownershipRequired = function(req, res, next){
 
 // GET /quizzes
 exports.index = function(req, res, next) {
-	models.Quiz.findAll({ include: [ models.Attachment ] })
+	models.Quiz.findAll({ include: [ models.Attachment ] , {where: {question: {$like: "%texto_a_buscar%"}}}})
 		.then(function(quizzes) {
+      if(req.params.format){
+        res.json(quizzes);
+      }else{
 			res.render('quizzes/index.ejs', { quizzes: quizzes});
-		})
+		}})
 		.catch(function(error) {
 			next(error);
 		});
@@ -82,7 +85,7 @@ exports.new = function(req, res, next) {
 };
 
 
-// POST /quizzes/create
+// POST /quizzes/create P13
 exports.create = function(req, res, next) {
 
     var authorId = req.session.user && req.session.user.id || 0;
@@ -139,7 +142,7 @@ exports.update = function(req, res, next) {
   req.quiz.question = req.body.question;
   req.quiz.answer   = req.body.answer;
 
-  req.quiz.save({fields: ["question", "answer"]})
+  req.quiz.save({fields: ["question", "answer", "AuthorId"]})
     .then(function(quiz) {
 
         req.flash('success', 'Pregunta y Respuesta editadas con éxito.');

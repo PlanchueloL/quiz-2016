@@ -33,6 +33,12 @@
      </tr> 
   <% } %>
 </table>
+<p> Busqueda de preguntas: <p>
+<form method = "get" action = "/quizzes?search=exto_a_buscar">
+<input type= "text" name="search" value= "texto_a_buscar" placeholder="Filtrar">
+<p>
+<input type = "Submit" value="Enviar"> <p>
+</form> </p>
 
 <% if (session.user) { %>
   <a href="/quizzes/new"><button type="button">Crear pregunta</button></a>

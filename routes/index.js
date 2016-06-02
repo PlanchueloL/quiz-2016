@@ -15,9 +15,14 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+//P9: Autores
 router.get('/author', function(req, res){
 	res.render('author', {autor: 'Guzmán Gómez Pérez y Laura Planchuelo'});
 });
+
+
+//P10: Filtrar búsqueda
+router.get('/quizzes?search="texto_a_buscar"', quizController.index);
 
 // Autoload de parametros
 router.param('quizId', quizController.load);  // autoload :quizId
