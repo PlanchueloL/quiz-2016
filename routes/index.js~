@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 //P9: Autores
 router.get('/author', function(req, res){
-	res.render('author', {autor: 'Laura Planchuelo'});
+	res.render('author', {autor: 'Guzmán Gómez Pérez y Laura Planchuelo'});
 });
 
 
