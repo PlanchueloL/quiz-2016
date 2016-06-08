@@ -42,7 +42,7 @@ exports.ownershipRequired = function(req, res, next){
 
 // GET /quizzes
 exports.index = function(req, res, next) {
-	models.Quiz.findAll({ include: [ models.Attachment ] , {where: {question: {$like: "%texto_a_buscar%"}}}})
+	models.Quiz.findAll({ include: [ models.Attachment ] , where: {question: {$like: "%texto_a_buscar%"}}}})
 		.then(function(quizzes) {
       if(req.params.format){
         res.json(quizzes);
